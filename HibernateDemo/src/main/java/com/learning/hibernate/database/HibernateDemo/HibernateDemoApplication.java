@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HibernateDemoApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(HibernateDemoApplication.class, args);
 	}
 
