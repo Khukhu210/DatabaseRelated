@@ -1,17 +1,36 @@
 package com.jpa.hibernate.hibernatePractice.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries(
+		value = {
+				@NamedQuery(name="query_get_all_courses",
+						query="Select c from Course c"),
+				@NamedQuery(name="query_get_100_Steps_courses",
+				query="Select c from Course c where name like '%100 Steps'")	
+		})
+
+
 public class Course {
 	
 	 @Id
 	 @GeneratedValue
      private Long id ;
 	 private String name;
-	   
+	 
+	 @OneToMany(mappedBy = "course")
+	 private List<Review > reviews = new  ArrayList<>();
+	 
+  
 	   public Course() {
 	 }
 	   
@@ -27,6 +46,18 @@ public class Course {
 		this.name = name;
 	}
 	   
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void addReviews(Review review) {
+		this.reviews.add(review) ;
+	}
+	
+	public void removeReviews(Review review) {
+		this.reviews.remove(review) ;
+	}
+
 	public String getId() {
 		return name;
 	}
