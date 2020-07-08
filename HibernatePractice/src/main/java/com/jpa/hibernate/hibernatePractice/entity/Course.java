@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,6 +31,9 @@ public class Course {
 	 
 	 @OneToMany(mappedBy = "course")
 	 private List<Review > reviews = new  ArrayList<>();
+	 
+	 @ManyToMany(mappedBy = "courses")
+	 private List<Student> students = new  ArrayList<>();
 	 
   
 	   public Course() {
@@ -56,6 +61,15 @@ public class Course {
 	
 	public void removeReviews(Review review) {
 		this.reviews.remove(review) ;
+	}
+	
+
+	public List<Student> getStudent() {
+		return students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
 	}
 
 	public String getId() {

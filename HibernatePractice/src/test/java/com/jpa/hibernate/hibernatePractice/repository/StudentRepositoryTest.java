@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpa.hibernate.hibernatePractice.HibernatePracticeApplication;
+import com.jpa.hibernate.hibernatePractice.entity.Course;
 import com.jpa.hibernate.hibernatePractice.entity.Passport;
 import com.jpa.hibernate.hibernatePractice.entity.Student;
 
@@ -41,5 +42,22 @@ class StudentRepositoryTest {
 		logger.info("passport ->{}",passport);
 	    logger.info("student ->{}",passport.getStudent());
 	}
+	
+	@Test
+	@Transactional
+	public void retrieveStudentAndCourses() {
+		Student student = em.find(Student.class,20001L);
+		logger.info("student ->{}",student);
+	    logger.info("courses ->{}",student.getCourses());
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveCoursesAndStudent() {
+		Course course = em.find(Course.class,10001L);
+		logger.info("courses ->{}",course);
+	    logger.info("student ->{}",course.getStudent());
+	}
+	
 
 }

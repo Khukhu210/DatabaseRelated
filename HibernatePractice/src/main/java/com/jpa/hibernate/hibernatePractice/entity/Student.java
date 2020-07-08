@@ -1,10 +1,16 @@
 package com.jpa.hibernate.hibernatePractice.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -23,6 +29,15 @@ public class Student {
 	 
 	 @OneToOne(fetch = FetchType.LAZY)
 	 private Passport passport;
+	 
+	 //joinColumn - STUDENT_ID
+	 //inverseJoinColummn-COURSE_ID
+	 @ManyToMany
+	 @JoinTable(name = "STUDENT_COURSE",joinColumns = @JoinColumn(name = "STUDENT_ID"),
+	 inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+	
+	 
+	  private List<Course> courses = new  ArrayList<>();
 	   
 	   public Student() {
 	 }
@@ -47,6 +62,16 @@ public class Student {
 
 	public void setPassport(Passport passport) {
 		this.passport = passport;
+	}
+	
+	
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void addCourses(Course course) {
+		this.courses.add(course);
 	}
 
 	public String getId() {
