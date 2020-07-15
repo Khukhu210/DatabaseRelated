@@ -47,13 +47,13 @@ public class HibernatePracticeApplication implements CommandLineRunner{
 		//courseRepository.workWithEntityManager();
 		//studentRepository.saveStudentWithPassport();
 		
-		//List<Review> reviews = new ArrayList<>();
+		// List<Review> reviews = new ArrayList<>();
 		//reviews.add(new Review("5","Great hands on stuff"));
 		//reviews.add(new Review("5","Hatsoff"));
 		//courseRepository.addReviewsForCourse(10003L, reviews );
 		
 		studentRepository.insertStudentAndCourse(new Student("Piya"),
-				new Course("microservices in 100 steps"));
+		new Course("microservices in 100 steps"));
 	
 	}
 
