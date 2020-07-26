@@ -10,7 +10,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 @Entity
-
 public class Passport {
 	
 	 @Id

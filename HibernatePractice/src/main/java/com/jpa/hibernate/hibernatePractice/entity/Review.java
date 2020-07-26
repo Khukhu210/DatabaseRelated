@@ -9,7 +9,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-
 public class Review {
 	
 	 @Id

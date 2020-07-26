@@ -34,8 +34,7 @@ public class StudentRepository {
 			
 	}
 	
-	public void deleteById(Long id)
-	{
+	public void deleteById(Long id){
 		Student student = findById(id);
 		em.remove(student);
 	}
